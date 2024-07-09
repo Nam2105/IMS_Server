@@ -43,13 +43,13 @@ exports.addNewInternship = async (req, res, next) => {
       application,
       files,
     });
-
     const faculty = await db.Faculty.findOne({
       currentClass: {
         year: student.currentClass.year,
         div: student.currentClass.div,
       },
     });
+    console.log(faculty)
     internship.holder = { id: faculty._id, designation: faculty.designation };
 
     faculty.applicationsReceived.push(internship._id);
