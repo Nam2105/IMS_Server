@@ -15,6 +15,8 @@ const noticesSchema = new mongoose.Schema({
   positions: Number,
   domain: String,
   requirements: String,
+  startDate: Date,          // Thêm trường mới
+  internshipType: String   // Thêm trường mới
 });
 
 module.exports = mongoose.model("Notices", noticesSchema);

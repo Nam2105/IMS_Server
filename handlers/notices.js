@@ -15,7 +15,10 @@ exports.addNewNotice = async (req, res, next) => {
     requirements,
     domain,
     emailId,
+    startDate,          // Trường mới
+    internshipType     // Trường mới
   } = req.body;
+  
   try {
     const date = new Date();
     const notices = await db.Notices.create({
@@ -33,6 +36,8 @@ exports.addNewNotice = async (req, res, next) => {
       requirements,
       domain,
       emailId,
+      startDate,          // Trường mới
+      internshipType     // Trường mới
     });
 
     return res.status(201).json(notices);
@@ -73,6 +78,7 @@ exports.studentsNotices = async (req, res, next) => {
 
 exports.deleteNotice = async (req, res, next) => {
   const { id: noticeId } = req.params;
+  
   try {
     let notices = await db.Notices.findById(noticeId);
     if (!notices) throw new Error("No Notice found");
@@ -85,4 +91,3 @@ exports.deleteNotice = async (req, res, next) => {
     });
   }
 };
-
